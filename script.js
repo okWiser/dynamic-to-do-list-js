@@ -29,8 +29,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function loadTasks() {
-        // Implement your logic to load tasks here
-        // For example, you can fetch tasks from an API or retrieve them from local storage
+        const savedTasks = localStorage.getItem('tasks'); // Retrieve tasks from local storage
+        if (savedTasks) {
+            const tasks = JSON.parse(savedTasks);
+            tasks.forEach(function(taskText) {
+                const li = document.createElement('li');
+                li.textContent = taskText;
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.classList.add('remove-btn');
+                removeButton.onclick = function() {
+                    taskList.removeChild(li);
+                };
+
+                li.appendChild(removeButton);
+                taskList.appendChild(li);
+            });
+        }
     }
 
     addButton.addEventListener('click', addTask);
