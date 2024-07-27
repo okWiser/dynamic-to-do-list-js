@@ -68,4 +68,8 @@ const saveTasks = function() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-window.addEventListener('beforeunload', saveTasks);
+window.addEventListener('beforeunload', function() {
+    saveTasks();
+    const tasks = Array.from(taskList.children).map(li => li.textContent);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+});
