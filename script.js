@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
         taskInput.value = '';
     }
 
+    function loadTasks() {
+        // Implement your logic to load tasks here
+        // For example, you can fetch tasks from an API or retrieve them from local storage
+    }
+
     addButton.addEventListener('click', addTask);
     addTaskButton.addEventListener('click', addTask); // Add event listener to the add-task-btn element
 
@@ -37,5 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.addEventListener('DOMContentLoaded', addTask);
+    document.addEventListener('DOMContentLoaded', function() {
+        addTask();
+        loadTasks(); // Call the loadTasks function when the DOM is loaded
+    });
 });
