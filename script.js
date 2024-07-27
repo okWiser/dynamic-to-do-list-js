@@ -63,3 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
         loadTasks(); // Call the loadTasks function when the DOM is loaded
     });
 });
+const saveTasks = function() {
+    const tasks = Array.from(taskList.children).map(li => li.textContent);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+window.addEventListener('beforeunload', saveTasks);
